@@ -1,0 +1,25 @@
+/* 
+  Localizable.strings
+  
+
+  Created by Romain Mullot on 8/03/2020.
+  
+*/
+
+// MARK: - Text
+
+"badNetworkMessage" = "Réseau de mauvaise qualité";
+
+"errorTitle" = "Erreur";
+
+"errorUnavailableNetwork" = "Réseau indisponible ou perdu.";
+
+"networkAvailableMessage" = "Réseau disponible";
+
+"noTitle" = "Non";
+
+"okTitle" = "OK";
+
+"yesTitle" = "Oui";
+
+"noResults" = "Aucun résultats disponibles";

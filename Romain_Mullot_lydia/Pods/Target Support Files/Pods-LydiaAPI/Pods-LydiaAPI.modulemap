@@ -1,0 +1,6 @@
+framework module Pods_LydiaAPI {
+  umbrella header "Pods-LydiaAPI-umbrella.h"
+
+  export *
+  module * { export * }
+}

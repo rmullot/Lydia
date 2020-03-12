@@ -1,0 +1,6 @@
+framework module Pods_Test_Lydia {
+  umbrella header "Pods-Test_Lydia-umbrella.h"
+
+  export *
+  module * { export * }
+}

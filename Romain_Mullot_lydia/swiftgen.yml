@@ -1,0 +1,6 @@
+strings:
+  inputs:
+  - LydiaAPI/Resources/en.lproj/Localizable.strings
+  outputs:
+    templateName: structured-swift5
+    output: LydiaAPI/Resources/Strings.swift

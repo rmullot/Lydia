@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19D76" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="ImageCoreData" representedClassName="ImageCoreData" syncable="YES">
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <attribute name="url" optional="YES" attributeType="String"/>
+        <relationship name="user" maxCount="1" deletionRule="Nullify" destinationEntity="UserCoreData" inverseName="images" inverseEntity="UserCoreData"/>
+    </entity>
+    <entity name="LocationCoreData" representedClassName="LocationCoreData" syncable="YES">
+        <attribute name="city" attributeType="String"/>
+        <attribute name="country" attributeType="String"/>
+        <attribute name="latitude" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="longitude" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="postcode" attributeType="String"/>
+        <attribute name="state" attributeType="String"/>
+        <attribute name="street" attributeType="String"/>
+        <attribute name="timezone" attributeType="String"/>
+        <relationship name="users" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="UserCoreData" inverseName="location" inverseEntity="UserCoreData"/>
+    </entity>
+    <entity name="UserCoreData" representedClassName="UserCoreData" syncable="YES">
+        <attribute name="birthdayDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="cell" attributeType="String"/>
+        <attribute name="email" attributeType="String"/>
+        <attribute name="gender" attributeType="String"/>
+        <attribute name="identity" optional="YES" attributeType="String"/>
+        <attribute name="nationality" optional="YES" attributeType="String"/>
+        <attribute name="phone" attributeType="String"/>
+        <attribute name="registeredDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="images" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ImageCoreData" inverseName="user" inverseEntity="ImageCoreData"/>
+        <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LocationCoreData" inverseName="users" inverseEntity="LocationCoreData"/>
+    </entity>
+    <elements>
+        <element name="ImageCoreData" positionX="-260.45703125" positionY="63.76953125" width="128" height="88"/>
+        <element name="UserCoreData" positionX="160" positionY="192" width="128" height="193"/>
+        <element name="LocationCoreData" positionX="-194.796875" positionY="269.56640625" width="128" height="178"/>
+    </elements>
+</model>

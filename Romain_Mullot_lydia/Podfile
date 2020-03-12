@@ -1,0 +1,21 @@
+# Uncomment the next line to define a global platform for your project
+platform :ios, '11.0'
+
+workspace 'Romain_Mullot_Lydia'
+
+inhibit_all_warnings!
+
+target 'Test_Lydia' do
+  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+  use_frameworks!
+  # Pods for Test_Lydia
+  pod 'SwiftLint'
+  pod 'Kingfisher'
+pod 'SwiftMessages'
+end
+
+target 'LydiaAPI' do
+  project 'LydiaAPI/LydiaAPI'
+  use_frameworks!
+  pod 'SwiftMessages'
+end

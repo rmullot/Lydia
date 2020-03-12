@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:Test_Lydia.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:LydiaNetwork/LydiaNetwork.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:LydiaBridge/LydiaBridge.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:LydiaAPI/LydiaAPI.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:LydiaCore/LydiaCore.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:LydiaUIKit/LydiaUIKit.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:LydiaCoreData/LydiaCoreData.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Pods/Pods.xcodeproj">
+   </FileRef>
+</Workspace>
