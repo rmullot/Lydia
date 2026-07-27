@@ -235,6 +235,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7A41A1BA240FF5A8008BC934 /* Build configuration list for PBXNativeTarget "Test_Lydia" */;
 			buildPhases = (
+				1B8FE4FDB01928D8A710A54F /* SwiftLint Autocorrect */,
 				7A41A18C240FF5A4008BC934 /* Sources */,
 				7A41A18D240FF5A4008BC934 /* Frameworks */,
 				7A41A18E240FF5A4008BC934 /* Resources */,
@@ -373,6 +374,28 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1B8FE4FDB01928D8A710A54F /* SwiftLint Autocorrect */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "SwiftLint Autocorrect";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin:/usr/local/bin\"\nif which swiftlint > /dev/null; then\n  swiftlint lint --fix --config \"${SRCROOT}/.swiftlint.auto.yml\"\nelse\n  echo \"warning: SwiftLint not installed, skipping autocorrect\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		7A41A18C240FF5A4008BC934 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -471,7 +494,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -534,7 +557,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

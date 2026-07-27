@@ -1,4 +1,4 @@
-whitelist_rules: # rule identifiers use for autocorrect
+only_rules: # rule identifiers use for autocorrect
   - trailing_whitespace
   - trailing_newline
   - colon
