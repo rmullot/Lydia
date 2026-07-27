@@ -48,6 +48,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		24AFDF13E90ED6D0DCFB2406 /* swiftgen.yml */ = {isa = PBXFileReference; includeInIndex = 1; path = swiftgen.yml; sourceTree = "<group>"; };
+		676AB20A06399E224996653F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		727B7C74594D488B005CD891 /* .gitignore */ = {isa = PBXFileReference; includeInIndex = 1; name = .gitignore; path = ../.gitignore; sourceTree = "<group>"; };
 		7A103221241130F2007F3040 /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
 		7A103223241130F2007F3040 /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		7A103225241130F2007F3040 /* UsersListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersListViewController.swift; sourceTree = "<group>"; };
@@ -67,6 +70,9 @@
 		7A41A1B1240FF5A8008BC934 /* Test_LydiaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Test_LydiaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A41A1B5240FF5A8008BC934 /* Test_LydiaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_LydiaUITests.swift; sourceTree = "<group>"; };
 		7A41A1B7240FF5A8008BC934 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8561F8CA71B940A54284CF36 /* CLAUDE.md */ = {isa = PBXFileReference; includeInIndex = 1; name = CLAUDE.md; path = ../CLAUDE.md; sourceTree = "<group>"; };
+		914554D3DB685D717186BC4B /* .swiftlint.yml */ = {isa = PBXFileReference; includeInIndex = 1; path = .swiftlint.yml; sourceTree = "<group>"; };
+		9830D177DF47AA32937CA885 /* .swiftlint.auto.yml */ = {isa = PBXFileReference; includeInIndex = 1; path = .swiftlint.auto.yml; sourceTree = "<group>"; };
 		AA0000000000000000000A02 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -102,6 +108,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		23919582797CB0AA41DEC7D9 /* Claude */ = {
+			isa = PBXGroup;
+			children = (
+				8561F8CA71B940A54284CF36 /* CLAUDE.md */,
+			);
+			name = Claude;
+			sourceTree = "<group>";
+		};
+		48968C8AC532C3C488212FCB /* SwiftLint */ = {
+			isa = PBXGroup;
+			children = (
+				914554D3DB685D717186BC4B /* .swiftlint.yml */,
+				9830D177DF47AA32937CA885 /* .swiftlint.auto.yml */,
+			);
+			name = SwiftLint;
+			sourceTree = "<group>";
+		};
+		533AB55D3BE04DC63961C35C /* Git */ = {
+			isa = PBXGroup;
+			children = (
+				727B7C74594D488B005CD891 /* .gitignore */,
+			);
+			name = Git;
+			sourceTree = "<group>";
+		};
 		7A1031EC240FFDC9007F3040 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +163,11 @@
 		7A41A187240FF5A4008BC934 = {
 			isa = PBXGroup;
 			children = (
+				676AB20A06399E224996653F /* README.md */,
+				48968C8AC532C3C488212FCB /* SwiftLint */,
+				533AB55D3BE04DC63961C35C /* Git */,
+				F37DD0F579A0B9D9D0F2880D /* SwiftGen */,
+				23919582797CB0AA41DEC7D9 /* Claude */,
 				7A41A192240FF5A4008BC934 /* Test_Lydia */,
 				7A41A1A9240FF5A8008BC934 /* Test_LydiaTests */,
 				7A41A1B4240FF5A8008BC934 /* Test_LydiaUITests */,
@@ -182,6 +218,14 @@
 				7A41A1B7240FF5A8008BC934 /* Info.plist */,
 			);
 			path = Test_LydiaUITests;
+			sourceTree = "<group>";
+		};
+		F37DD0F579A0B9D9D0F2880D /* SwiftGen */ = {
+			isa = PBXGroup;
+			children = (
+				24AFDF13E90ED6D0DCFB2406 /* swiftgen.yml */,
+			);
+			name = SwiftGen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

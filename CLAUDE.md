@@ -55,3 +55,9 @@ When changing a module, check both directions of the dependency graph above: wha
 - **SwiftGen** (`swiftgen.yml` at the workspace root) generates `LydiaAPI/Resources/Strings.swift` from `LydiaAPI/Resources/en.lproj/Localizable.strings`. Edit the `.strings` file and regenerate rather than hand-editing `Strings.swift`; it's currently invoked manually (`swiftgen`), not yet wired as a build phase/plugin.
 - **SwiftLint** runs as an SPM build-tool plugin (`SwiftLintBuildToolPlugin`) on the `Test_Lydia` target, configured via `.swiftlint.yml` at the workspace root — `force_cast`, `line_length`, and `notification_center_detachment` are disabled; `empty_count` is opt-in. Note: third-party SPM plugins need a one-time "Trust & Enable" approval in Xcode.app before they run; until approved they're silently skipped, including in headless `xcodebuild`.
 - Deployment target across the app and every package is **iOS 15**.
+
+## Known benign console warnings
+
+These appear in the console but are not caused by app code and don't need fixing:
+- `Failed to locate resource named "default.csv"`, `CAMetalLayer ignoring invalid setDrawableSize width=0.000000 height=0.000000`, `clip: empty path.` — logged by MapKit/Metal when `MKMapView` (in `UserDescriptionViewController`) is first inserted into the view hierarchy, before Auto Layout resolves its frame. Transient, harmless.
+- `Class UIAccessibilityLoaderWebShared is implemented in both ... WebCore.axbundle ... and ... WebKit.axbundle` — a duplicate-class conflict inside the iOS Simulator runtime's own accessibility bundles (seen on iOS 26.5 simulator), unrelated to this project. Try a different simulator runtime if it ever causes real crashes rather than just a log line.
