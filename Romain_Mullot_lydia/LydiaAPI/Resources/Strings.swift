@@ -35,7 +35,12 @@ public enum L10n {
 
 extension L10n {
   private static func tr(_ table: String, _ key: String, _ args: CVarArg...) -> String {
-    let format = NSLocalizedString(key, tableName: table, bundle: Bundle(for: BundleToken.self), comment: "")
+    #if SWIFT_PACKAGE
+    let bundle = Bundle.module
+    #else
+    let bundle = Bundle(for: BundleToken.self)
+    #endif
+    let format = NSLocalizedString(key, tableName: table, bundle: bundle, comment: "")
     return String(format: format, locale: Locale.current, arguments: args)
   }
 }

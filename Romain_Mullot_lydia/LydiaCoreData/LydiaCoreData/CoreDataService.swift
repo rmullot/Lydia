@@ -42,7 +42,13 @@ public final class CoreDataService: CoreDataServiceProtocol {
         NSPersistentContainer.defaultDirectoryURL()
         let momdName = "LydiaCoreData"
 
-        guard let modelURL = Bundle(for: type(of: self)).url(forResource: momdName, withExtension: "momd") else {
+        #if SWIFT_PACKAGE
+        let bundle = Bundle.module
+        #else
+        let bundle = Bundle(for: type(of: self))
+        #endif
+
+        guard let modelURL = bundle.url(forResource: momdName, withExtension: "momd") else {
                 fatalError("Error loading model from bundle")
         }
 

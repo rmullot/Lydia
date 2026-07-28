@@ -172,6 +172,7 @@ private extension UserDescriptionViewController {
 
     func setup() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "<", style: .plain, target: self, action: .didTapBackButton)
+        applyOpaqueWhiteNavigationBarAppearance()
         edgesForExtendedLayout = []
         view.isOpaque = true
         view.backgroundColor = .white

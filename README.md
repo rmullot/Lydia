@@ -1,0 +1,5 @@
+# Lydia
+
+Lydia is a mobile app that shows a browsable list of random people. You can scroll through the list, tap on someone to see more details about them, and the app remembers what you've already loaded so it still works even without an internet connection.
+
+Under the hood, the project is an iOS app (`Test_Lydia`) built as a set of local Swift Packages, one per module: `LydiaCore` (shared utilities and dependency injection), `LydiaNetwork` (reachability/network activity), `LydiaUIKit` (shared UIKit components), `LydiaAPI` (remote API access and error UI), `LydiaCoreData` (Core Data persistence), and `LydiaBridge` (the app-facing domain layer combining API and persistence). The app target follows a Coordinator pattern for navigation and talks to the domain layer through `LydiaBridge`'s `UserService` rather than directly to the network or persistence layers. Dependencies flow one way — e.g. `LydiaAPI` depends on `LydiaCore`/`LydiaNetwork`, `LydiaCoreData` depends on `LydiaAPI`, and `LydiaBridge` depends on both `LydiaAPI` and `LydiaCoreData` — and the deployment target across the app and every package is iOS 15.

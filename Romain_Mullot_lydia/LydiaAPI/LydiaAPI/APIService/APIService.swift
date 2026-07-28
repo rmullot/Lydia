@@ -6,6 +6,8 @@
 //  Copyright © 2020 Romain Mullot. All rights reserved.
 //
 
+import Foundation
+import UIKit
 import LydiaNetwork
 import SwiftMessages
 

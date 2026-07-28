@@ -74,6 +74,7 @@ extension UsersListViewController {
 private extension UsersListViewController {
 
     func setup() {
+        applyOpaqueWhiteNavigationBarAppearance()
         view.isOpaque = true
         viewModel.needRefresh = { [weak self] newIndexPathsToLoad in
 
@@ -108,6 +109,17 @@ extension UsersListViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 40
+    }
+
+    // `prefetchRowsAt` is only a look-ahead hint and is not guaranteed to be called for every
+    // row that eventually becomes visible (UIKit can skip/coalesce it, e.g. when a short list
+    // already fills most of a tall screen and only a small scroll is needed to reveal the
+    // LoadingCell). `willDisplay` is guaranteed to fire for every cell that is actually shown,
+    // so it is the reliable place to trigger pagination once the LoadingCell appears.
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if viewModel.needLoading(index: indexPath) {
+            viewModel.refreshUserList()
+        }
     }
 }
 

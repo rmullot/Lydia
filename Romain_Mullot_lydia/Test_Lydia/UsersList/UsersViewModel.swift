@@ -37,6 +37,7 @@ final class UsersViewModel: UsersViewModelProtocol {
     weak var delegate: UsersViewModelDelegate?
     private var users: [User] = []
     private let userService: UserServiceProtocol
+    private var isLoading = false
 
     init(userService: UserServiceProtocol) {
         self.userService = userService
@@ -47,8 +48,16 @@ final class UsersViewModel: UsersViewModelProtocol {
     }
 
     func refreshUserList() {
+        // Guard against overlapping requests: both `willDisplay` and `prefetchRowsAt` in the
+        // view controller can trigger this in close succession while a previous fetch for the
+        // same page is still in flight. Without this guard, concurrent calls race on mutating
+        // `users` and on computing `calculateIndexPathsToReload`, which can desync the index
+        // paths handed to `insertRows` from the row count `numberOfRowsInSection` will report.
+        guard !isLoading else { return }
+        isLoading = true
         userService.refreshUsers { [weak self] (result) in
             guard let strongSelf = self else { return }
+            defer { strongSelf.isLoading = false }
             var indexPathsToReload: [IndexPath]?
             switch result {
             case .success(let newUsers):
