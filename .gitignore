@@ -1,2 +1,55 @@
-
+# macOS
 .DS_Store
+
+# Xcode
+build/
+DerivedData/
+*.moved-aside
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata/
+*.xccheckout
+*.xcscmblueprint
+
+# Xcode workspace / scheme user state (keep shared schemes if any)
+*.xcworkspace/xcuserdata/
+*.xcodeproj/xcuserdata/
+*.xcodeproj/project.xcworkspace/xcuserdata/
+
+# Swift Package Manager
+.build/
+.swiftpm/
+Package.resolved
+
+# CocoaPods (not used in this project, kept as safety net)
+Pods/
+
+# Carthage
+Carthage/Build/
+Carthage/Checkouts/
+
+# fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output
+
+# SwiftLint
+.swiftlint-cache/
+
+# SwiftGen (generated output is checked in per CLAUDE.md; ignore only temp/cache)
+.swiftgen/
+
+# Claude Code local files
+.claude/settings.local.json
+.claude/*.local.json
+
+# Playgrounds
+timeline.xctimeline
+playground.xcworkspace
