@@ -48,9 +48,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		24AFDF13E90ED6D0DCFB2406 /* swiftgen.yml */ = {isa = PBXFileReference; includeInIndex = 1; path = swiftgen.yml; sourceTree = "<group>"; };
-		676AB20A06399E224996653F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		727B7C74594D488B005CD891 /* .gitignore */ = {isa = PBXFileReference; includeInIndex = 1; name = .gitignore; path = ../.gitignore; sourceTree = "<group>"; };
+		24AFDF13E90ED6D0DCFB2406 /* swiftgen.yml */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
+		676AB20A06399E224996653F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		727B7C74594D488B005CD891 /* .gitignore */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = .gitignore; path = ../.gitignore; sourceTree = "<group>"; };
 		7A103221241130F2007F3040 /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
 		7A103223241130F2007F3040 /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		7A103225241130F2007F3040 /* UsersListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersListViewController.swift; sourceTree = "<group>"; };
@@ -70,9 +70,9 @@
 		7A41A1B1240FF5A8008BC934 /* Test_LydiaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Test_LydiaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A41A1B5240FF5A8008BC934 /* Test_LydiaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_LydiaUITests.swift; sourceTree = "<group>"; };
 		7A41A1B7240FF5A8008BC934 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8561F8CA71B940A54284CF36 /* CLAUDE.md */ = {isa = PBXFileReference; includeInIndex = 1; name = CLAUDE.md; path = ../CLAUDE.md; sourceTree = "<group>"; };
-		914554D3DB685D717186BC4B /* .swiftlint.yml */ = {isa = PBXFileReference; includeInIndex = 1; path = .swiftlint.yml; sourceTree = "<group>"; };
-		9830D177DF47AA32937CA885 /* .swiftlint.auto.yml */ = {isa = PBXFileReference; includeInIndex = 1; path = .swiftlint.auto.yml; sourceTree = "<group>"; };
+		8561F8CA71B940A54284CF36 /* CLAUDE.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = CLAUDE.md; path = ../CLAUDE.md; sourceTree = "<group>"; };
+		914554D3DB685D717186BC4B /* .swiftlint.yml */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		9830D177DF47AA32937CA885 /* .swiftlint.auto.yml */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.yaml; path = .swiftlint.auto.yml; sourceTree = "<group>"; };
 		AA0000000000000000000A02 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -582,6 +582,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8JCA7TZP65;
 				INFOPLIST_FILE = Test_Lydia/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -599,6 +600,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8JCA7TZP65;
 				INFOPLIST_FILE = Test_Lydia/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
