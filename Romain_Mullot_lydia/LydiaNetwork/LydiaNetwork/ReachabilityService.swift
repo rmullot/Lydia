@@ -20,7 +20,7 @@ public enum OnlineMode: Int {
 
 // MARK: - Reachability Manager Delegate
 
-public protocol ReachabilityServiceDelegate: class {
+public protocol ReachabilityServiceDelegate: AnyObject {
     var onlineMode: OnlineMode {get}
     func onlineModeChanged(_ onlineMode: OnlineMode)
 }

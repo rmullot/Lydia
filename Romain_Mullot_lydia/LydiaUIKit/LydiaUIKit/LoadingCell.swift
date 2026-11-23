@@ -12,7 +12,7 @@ import UIKit
 final public class LoadingCell: UITableViewCell {
 
     private lazy var loadingIndicator: UIActivityIndicatorView = {
-        let loadingIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
+        let loadingIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
         loadingIndicator.backgroundColor = .white
         loadingIndicator.translatesAutoresizingMaskIntoConstraints = false
         loadingIndicator.accessibilityIdentifier = "LoadingCell_loadingIndicator"
