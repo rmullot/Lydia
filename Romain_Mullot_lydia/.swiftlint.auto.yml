@@ -9,3 +9,6 @@ only_rules: # rule identifiers use for autocorrect
   - opening_brace
   - leading_whitespace
   - return_arrow_whitespace
+excluded: # SPM/SourceKit-LSP build dirs hold third-party checkouts
+  - "**/.build"
+  - "*/.build"

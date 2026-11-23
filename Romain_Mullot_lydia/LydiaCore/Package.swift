@@ -3,7 +3,7 @@ import PackageDescription
 
 let package = Package(
     name: "LydiaCore",
-    platforms: [.iOS(.v15)],
+    platforms: [.iOS("17.0")],
     products: [
         .library(name: "LydiaCore", targets: ["LydiaCore"])
     ],

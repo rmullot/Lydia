@@ -3,7 +3,7 @@ import PackageDescription
 
 let package = Package(
     name: "LydiaBridge",
-    platforms: [.iOS(.v15)],
+    platforms: [.iOS("17.0")],
     products: [
         .library(name: "LydiaBridge", targets: ["LydiaBridge"])
     ],

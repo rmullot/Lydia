@@ -1,0 +1,342 @@
+{
+  "organization": "Romain Mullot",
+  "default-configuration": "Release",
+  "configurations": [
+    "Debug",
+    "Release",
+  ],
+  "localizations": {
+    "development": "en",
+    "supported": [
+      "Base",
+    ],
+  },
+  "packages": [
+    {
+      "kind": "local",
+      "path": "LydiaAPI",
+    }, {
+      "kind": "local",
+      "path": "LydiaBridge",
+    }, {
+      "kind": "local",
+      "path": "LydiaCore",
+    }, {
+      "kind": "local",
+      "path": "LydiaCoreData",
+    }, {
+      "kind": "local",
+      "path": "LydiaNetwork",
+    }, {
+      "kind": "local",
+      "path": "LydiaUIKit",
+    }, {
+      "kind": "remote",
+      "repository": "https://github.com/onevcat/Kingfisher.git",
+      "version": {
+        "up-to-next-major-version": "5.13.2",
+      },
+    }, {
+      "kind": "remote",
+      "repository": "https://github.com/realm/SwiftLint.git",
+      "version": {
+        "up-to-next-major-version": "0.54.0",
+      },
+    },
+  ],
+  "files": [
+    { "path": "../README.md", "index": true },
+    {
+      "kind": "group",
+      "name": "SwiftLint",
+      "children": [
+        { "path": ".swiftlint.yml", "index": true },
+        { "path": ".swiftlint.auto.yml", "index": true },
+      ],
+    }, {
+      "kind": "group",
+      "name": "Git",
+      "children": [
+        { "path": "../.gitignore", "index": true },
+      ],
+    }, {
+      "kind": "group",
+      "name": "SwiftGen",
+      "children": [
+        { "path": "swiftgen.yml", "index": true },
+      ],
+    }, {
+      "kind": "group",
+      "name": "Claude",
+      "children": [
+        { "path": "../CLAUDE.md", "index": true },
+      ],
+    }, {
+      "kind": "group",
+      "path": "Test_Lydia",
+      "children": [
+        { "path": "AppDelegate.swift", "target-membership": [ "Test_Lydia/compile-sources" ] },
+        { "path": "SceneDelegate.swift", "target-membership": [ "Test_Lydia/compile-sources" ] },
+        {
+          "kind": "group",
+          "path": "UserDescription",
+          "children": [
+            { "path": "UserDescriptionCoordinator.swift", "encoding": "utf8", "target-membership": [ "Test_Lydia/compile-sources" ] },
+            { "path": "UserDescriptionViewModel.swift", "encoding": "utf8", "target-membership": [ "Test_Lydia/compile-sources" ] },
+            { "path": "UserDescriptionViewController.swift", "encoding": "utf8", "target-membership": [ "Test_Lydia/compile-sources" ] },
+          ],
+        }, {
+          "kind": "group",
+          "path": "UsersList",
+          "children": [
+            { "path": "UserCell.swift", "encoding": "utf8", "target-membership": [ "Test_Lydia/compile-sources" ] },
+            { "path": "UsersListViewController.swift", "encoding": "utf8", "target-membership": [ "Test_Lydia/compile-sources" ] },
+            { "path": "UsersViewModel.swift", "encoding": "utf8", "target-membership": [ "Test_Lydia/compile-sources" ] },
+          ],
+        },
+        { "path": "ApplicationCoordinator.swift", "encoding": "utf8", "target-membership": [ "Test_Lydia/compile-sources" ] },
+        { "path": "Coordinator.swift", "encoding": "utf8", "target-membership": [ "Test_Lydia/compile-sources" ] },
+        { "path": "Assets.xcassets", "target-membership": [ "Test_Lydia/resources" ] },
+        {
+          "kind": "variant-group",
+          "name": "LaunchScreen.storyboard",
+          "target-membership": [
+            "Test_Lydia/resources",
+          ],
+          "children": [
+            {
+              "path": "Base.lproj/LaunchScreen.storyboard",
+            },
+          ],
+        },
+        { "path": "Info.plist" },
+      ],
+    }, {
+      "kind": "group",
+      "path": "Test_LydiaTests",
+      "children": [
+        { "path": "Test_LydiaTests.swift", "target-membership": [ "Test_LydiaTests/compile-sources" ] },
+        { "path": "Info.plist" },
+      ],
+    }, {
+      "kind": "group",
+      "path": "Test_LydiaUITests",
+      "children": [
+        { "path": "Test_LydiaUITests.swift", "target-membership": [ "Test_LydiaUITests/compile-sources" ] },
+        { "path": "Info.plist" },
+      ],
+    }, {
+      "kind": "group",
+      "name": "Products",
+      "children": [
+        { "path": "<PRODUCTS>/Test_Lydia.app", "id": "7A41A190240FF5A4008BC934", "type": "wrapper.application", "index": false },
+        { "path": "<PRODUCTS>/Test_LydiaTests.xctest", "id": "7A41A1A6240FF5A8008BC934", "type": "wrapper.cfbundle", "index": false },
+        { "path": "<PRODUCTS>/Test_LydiaUITests.xctest", "id": "7A41A1B1240FF5A8008BC934", "type": "wrapper.cfbundle", "index": false },
+      ],
+    },
+    { "kind": "group", "name": "Frameworks" },
+  ],
+  "targets": [
+    {
+      "name": "Test_Lydia",
+      "id": "7A41A18F240FF5A4008BC934",
+      "product": "Products/Test_Lydia.app",
+      "product-type": "application",
+      "build-phases": [
+        {
+          "kind": "script",
+          "name": "SwiftLint Autocorrect",
+          "log-environment-variables": true,
+          "run-on-every-build": true,
+          "shell": "/bin/sh",
+          "script": [
+            "export PATH=\"$PATH:/opt/homebrew/bin:/usr/local/bin\"",
+            "if which swiftlint > /dev/null; then",
+            "  swiftlint lint --fix --config \"${SRCROOT}/.swiftlint.auto.yml\"",
+            "else",
+            "  echo \"warning: SwiftLint not installed, skipping autocorrect\"",
+            "fi",
+            "",
+          ],
+        },
+        "compile-sources",
+        "frameworks",
+        "resources",
+      ],
+      "package-product-members": [
+        {
+          "package": "Kingfisher",
+          "product-name": "Kingfisher",
+          "build-phase": { "build-phase": "frameworks" },
+        }, {
+          "package": "LydiaAPI",
+          "product-name": "LydiaAPI",
+          "build-phase": { "build-phase": "frameworks" },
+        }, {
+          "package": "LydiaBridge",
+          "product-name": "LydiaBridge",
+          "build-phase": { "build-phase": "frameworks" },
+        }, {
+          "package": "LydiaCore",
+          "product-name": "LydiaCore",
+          "build-phase": { "build-phase": "frameworks" },
+        }, {
+          "package": "LydiaCoreData",
+          "product-name": "LydiaCoreData",
+          "build-phase": { "build-phase": "frameworks" },
+        }, {
+          "package": "LydiaNetwork",
+          "product-name": "LydiaNetwork",
+          "build-phase": { "build-phase": "frameworks" },
+        }, {
+          "package": "LydiaUIKit",
+          "product-name": "LydiaUIKit",
+          "build-phase": { "build-phase": "frameworks" },
+        },
+      ],
+      "build-settings": {
+        "ASSETCATALOG_COMPILER_APPICON_NAME": "AppIcon",
+        "CODE_SIGN_STYLE": "Automatic",
+        "DEVELOPMENT_TEAM": "8JCA7TZP65",
+        "INFOPLIST_FILE": "Test_Lydia/Info.plist",
+        "IPHONEOS_DEPLOYMENT_TARGET": "17.0",
+        "LD_RUNPATH_SEARCH_PATHS": [
+          "$(inherited)",
+          "@executable_path/Frameworks",
+        ],
+        "PRODUCT_BUNDLE_IDENTIFIER": "lydia.Test-Lydia",
+        "PRODUCT_NAME": "$(TARGET_NAME)",
+        "SWIFT_VERSION": "5.0",
+        "TARGETED_DEVICE_FAMILY": "1,2",
+      },
+    }, {
+      "name": "Test_LydiaTests",
+      "id": "7A41A1A5240FF5A8008BC934",
+      "product": "Products/Test_LydiaTests.xctest",
+      "product-type": "bundle.unit-test",
+      "test-host-target": "Test_Lydia",
+      "dependencies": [
+        "Test_Lydia",
+      ],
+      "build-phases": [
+        "compile-sources",
+        "frameworks",
+        "resources",
+      ],
+      "build-settings": {
+        "BUNDLE_LOADER": "$(TEST_HOST)",
+        "CODE_SIGN_STYLE": "Automatic",
+        "DEVELOPMENT_TEAM": "8JCA7TZP65",
+        "INFOPLIST_FILE": "Test_LydiaTests/Info.plist",
+        "IPHONEOS_DEPLOYMENT_TARGET": "17.0",
+        "LD_RUNPATH_SEARCH_PATHS": [
+          "$(inherited)",
+          "@executable_path/Frameworks",
+          "@loader_path/Frameworks",
+        ],
+        "PRODUCT_BUNDLE_IDENTIFIER": "lydia.Test-LydiaTests",
+        "PRODUCT_NAME": "$(TARGET_NAME)",
+        "SWIFT_VERSION": "5.0",
+        "TARGETED_DEVICE_FAMILY": "1,2",
+        "TEST_HOST": "$(BUILT_PRODUCTS_DIR)/Test_Lydia.app/Test_Lydia",
+      },
+    }, {
+      "name": "Test_LydiaUITests",
+      "id": "7A41A1B0240FF5A8008BC934",
+      "product": "Products/Test_LydiaUITests.xctest",
+      "product-type": "bundle.ui-testing",
+      "test-host-target": "Test_Lydia",
+      "dependencies": [
+        "Test_Lydia",
+      ],
+      "build-phases": [
+        "compile-sources",
+        "frameworks",
+        "resources",
+      ],
+      "build-settings": {
+        "CODE_SIGN_IDENTITY[sdk=macosx*]": "Apple Development",
+        "CODE_SIGN_STYLE": "Automatic",
+        "INFOPLIST_FILE": "Test_LydiaUITests/Info.plist",
+        "IPHONEOS_DEPLOYMENT_TARGET": "17.0",
+        "LD_RUNPATH_SEARCH_PATHS": [
+          "$(inherited)",
+          "@executable_path/Frameworks",
+          "@loader_path/Frameworks",
+        ],
+        "PRODUCT_BUNDLE_IDENTIFIER": "lydia.Test-LydiaUITests",
+        "PRODUCT_NAME": "$(TARGET_NAME)",
+        "SWIFT_VERSION": "5.0",
+        "TARGETED_DEVICE_FAMILY": "1,2",
+        "TEST_TARGET_NAME": "Test_Lydia",
+      },
+    },
+  ],
+  "build-settings": {
+    "ALWAYS_SEARCH_USER_PATHS": "NO",
+    "CLANG_ANALYZER_NONNULL": "YES",
+    "CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION": "YES_AGGRESSIVE",
+    "CLANG_CXX_LANGUAGE_STANDARD": "gnu++14",
+    "CLANG_CXX_LIBRARY": "libc++",
+    "CLANG_ENABLE_MODULES": "YES",
+    "CLANG_ENABLE_OBJC_ARC": "YES",
+    "CLANG_ENABLE_OBJC_WEAK": "YES",
+    "CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING": "YES",
+    "CLANG_WARN_BOOL_CONVERSION": "YES",
+    "CLANG_WARN_COMMA": "YES",
+    "CLANG_WARN_CONSTANT_CONVERSION": "YES",
+    "CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS": "YES",
+    "CLANG_WARN_DIRECT_OBJC_ISA_USAGE": "YES_ERROR",
+    "CLANG_WARN_DOCUMENTATION_COMMENTS": "YES",
+    "CLANG_WARN_EMPTY_BODY": "YES",
+    "CLANG_WARN_ENUM_CONVERSION": "YES",
+    "CLANG_WARN_INFINITE_RECURSION": "YES",
+    "CLANG_WARN_INT_CONVERSION": "YES",
+    "CLANG_WARN_NON_LITERAL_NULL_CONVERSION": "YES",
+    "CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF": "YES",
+    "CLANG_WARN_OBJC_LITERAL_CONVERSION": "YES",
+    "CLANG_WARN_OBJC_ROOT_CLASS": "YES_ERROR",
+    "CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER": "YES",
+    "CLANG_WARN_RANGE_LOOP_ANALYSIS": "YES",
+    "CLANG_WARN_STRICT_PROTOTYPES": "YES",
+    "CLANG_WARN_SUSPICIOUS_MOVE": "YES",
+    "CLANG_WARN_UNGUARDED_AVAILABILITY": "YES_AGGRESSIVE",
+    "CLANG_WARN_UNREACHABLE_CODE": "YES",
+    "CLANG_WARN__DUPLICATE_METHOD_MATCH": "YES",
+    "COPY_PHASE_STRIP": "NO",
+    "DEBUG_INFORMATION_FORMAT[config=Debug]": "dwarf",
+    "DEBUG_INFORMATION_FORMAT[config=Release]": "dwarf-with-dsym",
+    "ENABLE_NS_ASSERTIONS[config=Release]": "NO",
+    "ENABLE_STRICT_OBJC_MSGSEND": "YES",
+    "ENABLE_TESTABILITY[config=Debug]": "YES",
+    "ENABLE_USER_SCRIPT_SANDBOXING": "NO",
+    "GCC_C_LANGUAGE_STANDARD": "gnu11",
+    "GCC_DYNAMIC_NO_PIC[config=Debug]": "NO",
+    "GCC_NO_COMMON_BLOCKS": "YES",
+    "GCC_OPTIMIZATION_LEVEL[config=Debug]": "0",
+    "GCC_PREPROCESSOR_DEFINITIONS[config=Debug]": [
+      "DEBUG=1",
+      "$(inherited)",
+    ],
+    "GCC_WARN_64_TO_32_BIT_CONVERSION": "YES",
+    "GCC_WARN_ABOUT_RETURN_TYPE": "YES_ERROR",
+    "GCC_WARN_UNDECLARED_SELECTOR": "YES",
+    "GCC_WARN_UNINITIALIZED_AUTOS": "YES_AGGRESSIVE",
+    "GCC_WARN_UNUSED_FUNCTION": "YES",
+    "GCC_WARN_UNUSED_VARIABLE": "YES",
+    "IPHONEOS_DEPLOYMENT_TARGET": "17.0",
+    "MTL_ENABLE_DEBUG_INFO[config=Debug]": "INCLUDE_SOURCE",
+    "MTL_ENABLE_DEBUG_INFO[config=Release]": "NO",
+    "MTL_FAST_MATH": "YES",
+    "ONLY_ACTIVE_ARCH[config=Debug]": "YES",
+    "SDKROOT": "iphoneos",
+    "STRING_CATALOG_GENERATE_SYMBOLS": "YES",
+    "SWIFT_ACTIVE_COMPILATION_CONDITIONS[config=Debug]": "DEBUG",
+    "SWIFT_COMPILATION_MODE[config=Release]": "wholemodule",
+    "SWIFT_OPTIMIZATION_LEVEL[config=Debug]": "-Onone",
+    "SWIFT_OPTIMIZATION_LEVEL[config=Release]": "-O",
+    "VALIDATE_PRODUCT[config=Release]": "YES",
+  },
+  "last-upgrade": "27.2",
+  "last-swift-update": "11.3",
+}

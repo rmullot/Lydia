@@ -16,7 +16,7 @@ final class UserDescriptionViewController: UIViewController {
 
     private let viewModel: UserDescriptionViewModelProtocol
 
-    private let paddingStackView: CGFloat = 20
+    private let padding: CGFloat = 20
 
     private lazy var scrollView: LydiaScrollView = {
         let scrollView = LydiaScrollView.autolayout()
@@ -24,20 +24,6 @@ final class UserDescriptionViewController: UIViewController {
         scrollView.isUserInteractionEnabled = true
         scrollView.accessibilityIdentifier = "UserDescriptionViewController_scrollView"
         return scrollView
-    }()
-
-    private lazy var stackView: UIStackView = {
-        let stackView = UIStackView.autolayout()
-        stackView.backgroundColor = .white
-        stackView.accessibilityIdentifier = "UserDescriptionViewController_stackView"
-        stackView.isOpaque = true
-        stackView.axis = .vertical
-        stackView.distribution = .fill
-        stackView.alignment = .firstBaseline
-        stackView.layoutMargins = UIEdgeInsets(top: 0, left: paddingStackView, bottom: 0, right: paddingStackView)
-        stackView.isLayoutMarginsRelativeArrangement = true
-        stackView.isUserInteractionEnabled = true
-        return stackView
     }()
 
     private lazy var genderLabel: UILabel = {
@@ -181,40 +167,44 @@ private extension UserDescriptionViewController {
         config()
     }
 
+    var descriptionLabels: [UILabel] {
+        [genderLabel, identityLabel, birthdayDateLabel, addressLabel, emailLabel, phoneLabel, cellLabel]
+    }
+
     func setupInterface() {
         view.addSubview(scrollView)
-        scrollView.addSubview(largePhoto)
-        scrollView.addSubview(mapView)
-        scrollView.addSubview(stackView)
-        stackView.addArrangedSubview(genderLabel)
-        stackView.addArrangedSubview(identityLabel)
-        stackView.addArrangedSubview(birthdayDateLabel)
-        stackView.addArrangedSubview(addressLabel)
-        stackView.addArrangedSubview(emailLabel)
-        stackView.addArrangedSubview(phoneLabel)
-        stackView.addArrangedSubview(cellLabel)
-
+        scrollView.contentView.addSubview(largePhoto)
+        scrollView.contentView.addSubview(mapView)
+        descriptionLabels.forEach { scrollView.contentView.addSubview($0) }
     }
 
     func setupConstraints() {
         scrollView.anchorToBounds(view: view)
-        NSLayoutConstraint.activate([
-            largePhoto.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            largePhoto.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            largePhoto.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+        let contentView = scrollView.contentView
+        var constraints: [NSLayoutConstraint] = [
+            largePhoto.topAnchor.constraint(equalTo: contentView.topAnchor),
+            largePhoto.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            largePhoto.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             largePhoto.heightAnchor.constraint(equalToConstant: 200),
 
             mapView.topAnchor.constraint(equalTo: largePhoto.bottomAnchor),
-            mapView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            mapView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            mapView.heightAnchor.constraint(equalToConstant: 500),
+            mapView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            mapView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            mapView.heightAnchor.constraint(equalToConstant: 500)
+        ]
 
-            stackView.topAnchor.constraint(equalTo: mapView.bottomAnchor),
-            stackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
+        var previousBottom = mapView.bottomAnchor
+        for label in descriptionLabels {
+            constraints += [
+                label.topAnchor.constraint(equalTo: previousBottom),
+                label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
+                label.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding)
+            ]
+            previousBottom = label.bottomAnchor
+        }
+        constraints.append(previousBottom.constraint(equalTo: contentView.bottomAnchor, constant: -padding))
 
-        ])
+        NSLayoutConstraint.activate(constraints)
     }
 
     func config() {
@@ -233,11 +223,8 @@ private extension UserDescriptionViewController {
 
         annotationPoint.coordinate = viewModel.coordinates
         annotationPoint.title = viewModel.identity
-
-        let annotationView: MKPinAnnotationView = MKPinAnnotationView(annotation: annotationPoint, reuseIdentifier: "Annotation")
-        mapView.addAnnotation(annotationView.annotation!)
+        mapView.addAnnotation(annotationPoint)
         mapView.setCenter(viewModel.coordinates, animated: true)
-        loadViewIfNeeded()
     }
 }
 

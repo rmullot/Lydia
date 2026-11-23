@@ -54,7 +54,7 @@ When changing a module, check both directions of the dependency graph above: wha
 
 - **SwiftGen** (`swiftgen.yml` at the workspace root) generates `LydiaAPI/Resources/Strings.swift` from `LydiaAPI/Resources/en.lproj/Localizable.strings`. Edit the `.strings` file and regenerate rather than hand-editing `Strings.swift`; it's currently invoked manually (`swiftgen`), not yet wired as a build phase/plugin.
 - **SwiftLint** runs as an SPM build-tool plugin (`SwiftLintBuildToolPlugin`) on the `Test_Lydia` target, configured via `.swiftlint.yml` at the workspace root — `force_cast`, `line_length`, and `notification_center_detachment` are disabled; `empty_count` is opt-in. Note: third-party SPM plugins need a one-time "Trust & Enable" approval in Xcode.app before they run; until approved they're silently skipped, including in headless `xcodebuild`.
-- Deployment target across the app and every package is **iOS 15**.
+- Deployment target across the app, its test targets and every package is **iOS 17.0** (`IPHONEOS_DEPLOYMENT_TARGET` in `Test_Lydia.xcodeproj/project.xcproj`; packages use `.iOS("17.0")` because tools-version 5.7 has no `.v17`). The build is warning-free — keep it that way.
 
 ## Known benign console warnings
 

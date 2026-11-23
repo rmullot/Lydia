@@ -45,12 +45,6 @@ public final class NetworkActivityService: NetworkActivityServiceProtocol {
         disableActivityIndicatorClosure = DispatchQueue.main.cancellableAsyncAfter(secondsDeadline: maxActivityDuration) {
             self.disableActivityIndicator()
         }
-        guard #available(iOS 13.0, *) else {
-            if !UIApplication.shared.isNetworkActivityIndicatorVisible {
-                UIApplication.shared.isNetworkActivityIndicatorVisible = true
-            }
-            return count
-        }
         return count
     }
 
@@ -63,11 +57,6 @@ public final class NetworkActivityService: NetworkActivityServiceProtocol {
                 closure()
             }
             countRequest.setValue(0)
-            guard #available(iOS 13, *) else {
-                UIApplication.shared.isNetworkActivityIndicatorVisible = false
-                return currentCounter
-            }
-
         }
         return currentCounter
     }
@@ -77,12 +66,6 @@ public final class NetworkActivityService: NetworkActivityServiceProtocol {
             closure()
         }
         countRequest.setValue(0)
-        guard #available(iOS 13, *) else {
-            DispatchQueue.main.async {
-                       UIApplication.shared.isNetworkActivityIndicatorVisible = false
-                   }
-            return
-        }
     }
 
 }

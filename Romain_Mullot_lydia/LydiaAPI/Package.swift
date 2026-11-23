@@ -4,7 +4,7 @@ import PackageDescription
 let package = Package(
     name: "LydiaAPI",
     defaultLocalization: "en",
-    platforms: [.iOS(.v15)],
+    platforms: [.iOS("17.0")],
     products: [
         .library(name: "LydiaAPI", targets: ["LydiaAPI"])
     ],
