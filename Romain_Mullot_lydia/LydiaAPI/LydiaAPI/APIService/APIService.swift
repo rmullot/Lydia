@@ -35,8 +35,8 @@ public final class APIService: APIServiceProtocol {
     internal let uri = "https://randomuser.me/api/?page=%d&results=10&seed=919b9c876d9d40b4"
 
     public var onlineMode: OnlineMode = .online
-
-    internal var pagination = 0
+    /// API pagination start at 1 not 0
+    internal var pagination = 1
 
     public static let sharedInstance = APIService()
 
