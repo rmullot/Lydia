@@ -56,11 +56,12 @@ private extension LydiaScrollView {
     }
 
     func setupConstraints() {
-        contentView.setVerticalContentPriority(.defaultLow)
-        let bottomContentViewConstraint = contentView.heightAnchor.constraint(equalTo: heightAnchor)
-        bottomContentViewConstraint.priority = UILayoutPriority.defaultLow
         NSLayoutConstraint.activate([
-            contentView.widthAnchor.constraint(equalTo: widthAnchor), contentView.topAnchor.constraint(equalTo: topAnchor), contentView.leftAnchor.constraint(equalTo: leftAnchor), contentView.rightAnchor.constraint(equalTo: rightAnchor), contentView.bottomAnchor.constraint(equalTo: bottomAnchor), bottomContentViewConstraint
+            contentView.topAnchor.constraint(equalTo: contentLayoutGuide.topAnchor),
+            contentView.leadingAnchor.constraint(equalTo: contentLayoutGuide.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: contentLayoutGuide.trailingAnchor),
+            contentView.bottomAnchor.constraint(equalTo: contentLayoutGuide.bottomAnchor),
+            contentView.widthAnchor.constraint(equalTo: frameLayoutGuide.widthAnchor)
         ])
     }
 }
